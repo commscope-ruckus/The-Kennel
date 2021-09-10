@@ -1,0 +1,3 @@
+The main purpose of Crossbreeder is to simplify bulk converting Ruckus APs from one firmware version/type to another firmware version/type without involving any type of controller. It does this by connecting directly to each AP via SSH and sending the correct commands. It can also be used to run other commands such as factory reset, reboot or custom commands which you can define.
+
+To convert AP firmware, Crossbreeder needs an external FTP/TFTP/HTTP server to host the firmware files. It does not host firmware files itself. As per Ruckus, you will need to create a manifest file (aka a Control file) containing pointers to the firmware image. Pointing the AP directly to a firmware image (without manifest file) can lead to unpredictable results.

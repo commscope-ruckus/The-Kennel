@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "fca7012e-8615-4110-819e-0006d0aee3af",
+		"name": "WISPr API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SmartZone",
+			"item": [
+				{
+					"name": "Request client authentication - HTTPS",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"host\", \"10.0.0.98\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Login\",\n    \"UE-Proxy\": \"0\",\n    \"UE-IP\": \"ENCad53c54e83d229e4039c4c98afef9acc\",\n    \"UE-MAC\": \"ENC71874dba9b8a26e8df2630bb8d44f8b43269d59131eee0b7\",\n    \"UE-Username\": \"student\",\n    \"UE-Password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request client authentication - HTTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Login\",\n    \"UE-Proxy\": \"0\",\n    \"UE-IP\": \"ENCad53c54e83d229e4039c4c98afef9acc\",\n    \"UE-MAC\": \"ENC71874dba9b8a26e8df2630bb8d44f8b43269d59131eee0b7\",\n    \"UE-Username\": \"student\",\n    \"UE-Password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:9080/portalintf",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9080",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Encrypt IP or MAC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"Vendor\": \"ruckus\",\n\"RequestPassword\": \"ruckus123!\",\n\"APIVersion\": \"1.0\",\n\"RequestCategory\": \"GetConfig\",\n\"RequestType\": \"Encrypt\",\n\"Data\": \"42:8E:95:2B:81:99\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Decrypt IP or MAC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"Ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"GetConfig\",\n    \"RequestType\": \"Decrypt\",\n    \"Data\": \"ENCa519fcb1093bf7c084bac4ad3a7ef7baa256ff33568bda73\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "URL enrichment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"EnrichmentInfo\",\n    \"UE-IP\":\"ENCad53c54e83d229e4039c4c98afef9acc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Status\",\n    \"UE-IP\":\"ENCad53c54e83d229e4039c4c98afef9acc\",\n    \"UE-MAC\":\"ENC71874dba9b8a26e8df2630bb8d44f8b43269d59131eee0b7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.0.0.98:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"10",
+								"0",
+								"0",
+								"98"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Logout\",\n    \"UE-IP\": \"ENCad53c54e83d229e4039c4c98afef9acc\",\n    \"UE-MAC\": \"ENC71874dba9b8a26e8df2630bb8d44f8b43269d59131eee0b7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client disconnect",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"RequestPassword\": \"ruckus123!\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Disconnect\",\n    \"UE-IP\": \"ENCad53c54e83d229e4039c4c98afef9acc\",\n    \"UE-MAC\": \"ENC71874dba9b8a26e8df2630bb8d44f8b43269d59131eee0b7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}:9443/portalintf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "9443",
+							"path": [
+								"portalintf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RUCKUS Cloud",
+			"item": []
+		},
+		{
+			"name": "Request client authentication",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let tenantId = \"ebb9ea66951549548de56a621aceb3a5\";",
+							"let domain = tenantId + \".wispr.ruckus.cloud\";",
+							"pm.collectionVariables.set(\"host\", domain);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Vendor\": \"Ruckus\",\n    \"RequestUserName\": \"api\",\n    \"RequestPassword\": \"integration_key\",\n    \"APIVersion\": \"1.0\",\n    \"RequestCategory\": \"UserOnlineControl\",\n    \"RequestType\": \"Login\",\n    \"UE-IP\": \"ENCad53c54e83d229e4354695f28972b5fa\",\n    \"UE-MAC\": \"ENC3ac4e95e6fb569ec8b0c789fd2fc9bda\",\n    \"UE-Username\": \"student\",\n    \"UE-Password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}:443/portalintf",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"port": "443",
+					"path": [
+						"portalintf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Decrypt IP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Vendor\": \"ruckus\",\n    \"APIVersion\": \"1.0\",\n    \"RequestUserName\": \"api\",\n    \"RequestPassword\": \"integration_key\",\n    \"RequestCategory\": \"GetConfig\",\n    \"RequestType\": \"DecryptIP\",\n    \"UE-IP\": \"ENC93ee4456a0378b6ee881063561af2ddc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}:443/portalintf",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"port": "443",
+					"path": [
+						"portalintf"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "134.242.138.100"
+		},
+		{
+			"key": "serviceTicket",
+			"value": "ST-6-wwszfLIk4IdmZhv4A1iZ-vSZ-E-Interop-1"
+		},
+		{
+			"key": "tenantId",
+			"value": ""
+		}
+	]
+}

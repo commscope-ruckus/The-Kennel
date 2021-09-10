@@ -1,0 +1,18 @@
+import requests
+import warnings
+warnings.filterwarnings("ignore", message="Unverified HTTPS request")
+HOST = "SZ ip address"
+SZUSER = "SZ user name"
+SZPASSWORD = "SZ password"
+url = "https://" + HOST + ":8443" + "/wsg/api/public/v9_0/serviceTicket"
+body = {'username': SZUSER,'password': SZPASSWORD}
+response = requests.post(url, json = body, verify=False)
+print (response)
+print (response.json())
+print (response.json()['serviceTicket'])
+token = (response.json()['serviceTicket'])
+url = "https://" + HOST + ":8443" + "/wsg/api/public/v9_0/rkszones?serviceTicket=" + token
+zones = requests.get(url, verify=False) 
+print (zones.json())
+print (zones.json()['list'][0])
+print (zones.json()['list'][0]['name'])

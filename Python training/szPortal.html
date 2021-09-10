@@ -1,0 +1,41 @@
+<html>
+<head><title>Captive Portal 1.1</title>
+<script type="text/javascript">
+function get_param(name)
+{
+    if (location.href.indexOf("?") >= 0)
+    {
+        var query=location.href.split("?")[1];
+        var params=query.split("&");
+        for (var i = 0; i < params.length; i ++) 
+            {
+                value_pair=params[i].split("=");
+                    if (value_pair[0] == name)
+                        return unescape(value_pair[1]);
+                    }
+            }
+     return "";
+}
+</script>
+</head>
+<body style="font-size:24pt;">
+<br/><center><h2>Using ZD-Style Proxy</h2>
+<p id="variavel"></p>
+<script type="text/javascript">
+document.write('<form method=GET action="https://10.0.0.251:9998/SubscriberPortal/hotspotlogin">');
+//document.write('<form method=GET action="https://' + get_param("nbiIP") + ':9998/SubscriberPortal/hotspotlogin">');
+document.write('<input type="hidden" name="client-mac" style="font-size:24pt" value="'+get_param("client_mac")+'" />');
+document.write('<input type="hidden" name="uip" value="'+get_param("uip")+'" />');
+document.write('<input type="hidden" name="url" value="'+get_param("url")+'" />');
+document.write('<input type="hidden" name="proxy" value="'+get_param("proxy")+'" />');
+</script>
+<table style="font-size:24pt;">
+    <tr><td>Username:</td><td><input type="text" name="username" style="font-size:24pt"><br/></td></tr>
+    <tr><td>Password:</td><td><input type="password": name="password" style="font-size:24pt"><br/></td></tr>
+    <tr><td></td><td><input type= "submit" value="Login" style="font-size:24pt;"></td></tr>
+</table>
+</form>
+</center>
+</body>
+</html>
+
