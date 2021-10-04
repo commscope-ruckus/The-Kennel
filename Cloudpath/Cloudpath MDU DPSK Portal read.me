@@ -1,1 +1,10 @@
-
+This is a proof-of-concept Node Red workflow to allow MDU (Multi-Dwelling Units) tenants to be able to provision and manage a Ruckus Cloudpath Dynamic PSK (DPSK) which is a unique WPA2-Personal passphrase for secure tenant Wi-Fi access. The DPSK is tied to a paid-for term and bandwidth service level.
+ 
+In essence it provides:
+·         A web portal with AD Authentication (the MDU operator will maintain this and the tenant user profiles). The user profiles provide the tenant type via Group membership (private or affordable tenant), a Wi-Fi VLAN which will match their apartments wired VLAN, and an email address for notifications
+·         A tenant service selection form for term (length of Wi-Fi access) and bandwidth level (defaults are: Bronze = 10Mbps browsing, email and SD video streaming; Silver = 50Mbps browsing, email and HD video streaming; Gold = Uncapped service)
+·         The cost is calculated based on the type of tenant + term + bandwidth selection. Different per month base costs can be applied to these different entities. No payment integration is provided in this workflow, just a placeholder
+·         The tenant can update/renew the service at any time, replace the DPSK with a new one, or delete the DPSK (terminate the service)
+·         Upon creation, replacement or deletion of a DPSK, a confirmation is displayed in the browser and also sent via email to the tenant. Confirmation via SMS could also be added to the wrokflow
+·         When applicable, the confirmation display/email also contains a QR code that will automatically connect Android v9+ and iOS v11+ devices to the tenant Wi-Fi network
+·         It runs a daily check on DPSK’s due to expire and sends an email notification to the tenant (14 days ahead of expiry by default)
