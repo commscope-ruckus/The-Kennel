@@ -22,8 +22,7 @@ function get_param(name)
 <br/><center><h2>Using ZD-Style Proxy</h2>
 <p id="variavel"></p>
 <script type="text/javascript">
-document.write('<form method=GET action="https://10.0.0.251:9998/SubscriberPortal/hotspotlogin">');
-//document.write('<form method=GET action="https://' + get_param("nbiIP") + ':9998/SubscriberPortal/hotspotlogin">');
+document.write('<form method=GET action="https://' + get_param("nbiIP") + ':9998/SubscriberPortal/hotspotlogin">');
 document.write('<input type="hidden" name="client-mac" style="font-size:24pt" value="'+get_param("client_mac")+'" />');
 document.write('<input type="hidden" name="uip" value="'+get_param("uip")+'" />');
 document.write('<input type="hidden" name="url" value="'+get_param("url")+'" />');
