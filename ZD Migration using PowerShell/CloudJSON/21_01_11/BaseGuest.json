@@ -1,0 +1,280 @@
+{
+  "name": "string",
+  "id": "string",
+  "description": "string",
+  "venues": [
+    {
+      "venueId": "string",
+      "networkId": "string",
+      "clientIsolationAllowlistId": "string",
+      "apGroups": [
+        {
+          "apGroupId": "string",
+          "vlanId": 1,
+          "radio": "RadioEnum.Both",
+          "isDefault": false,
+          "apGroupName": "string",
+          "validationErrorSsidAlreadyActivated": false,
+          "validationErrorReachedMaxConnectedCaptiveNetworksLimit": false,
+          "validationError": false,
+          "vlanPoolId": "string",
+          "vlanPoolName": "string"
+        }
+      ],
+      "scheduler": {
+        "type": "SchedulerTypeEnum.ALWAYS_ON",
+        "sun": "string",
+        "mon": "string",
+        "tue": "string",
+        "wed": "string",
+        "thu": "string",
+        "fri": "string",
+        "sat": "string"
+      },
+      "isAllApGroups": true,
+      "allApGroupsVlanId": 1,
+      "vlanPoolId": "string",
+      "allApGroupsRadio": "RadioEnum.Both"
+    }
+  ],
+  "tenantId": "string",
+  "type": "guest",
+  "wlan": {
+    "wlanSecurity": "GuestWlanSecurityEnum.None",
+    "bypassCPUsingMacAddressAuthentication": true,
+    "advancedCustomization": {
+      "clientIsolation": true,
+      "devicePolicyId": "string",
+      "l2AclPolicyId": "string",
+      "l3AclPolicyId": "string",
+      "applicationPolicyId": "string",
+      "userUplinkRateLimiting": 0,
+      "userDownlinkRateLimiting": 0,
+      "totalUplinkRateLimiting": 0,
+      "totalDownlinkRateLimiting": 0,
+      "maxClientsOnWlanPerRadio": 100,
+      "enableBandBalancing": true,
+      "clientIsolationOptions": {
+        "packetsType": "UNICAST",
+        "autoVrrp": false
+      },
+      "hideSsid": false,
+      "forceMobileDeviceDhcp": false,
+      "clientLoadBalancingEnable": true,
+      "enableAaaVlanOverride": true,
+      "directedThreshold": 5,
+      "enableNeighborReport": true,
+      "enableFastRoaming": false,
+      "mobilityDomainId": 1,
+      "radioCustomization": {
+        "rfBandUsage": "RfBandUsageEnum.BOTH",
+        "bssMinimumPhyRate": "BssMinimumPhyRateEnum._default",
+        "phyTypeConstraint": "PhyTypeConstraintEnum.OFDM",
+        "managementFrameMinimumPhyRate": "ManagementFrameMinimumPhyRateEnum._6"
+      },
+      "enableSyslog": false,
+      "clientInactivityTimeout": 120,
+      "vlanPool": {
+        "name": "string",
+        "description": "string",
+        "vlanMembers": [
+          "string"
+        ]
+      },
+      "applicationPolicyEnable": false,
+      "l2AclEnable": false,
+      "l3AclEnable": false,
+      "wifiCallingEnabled": false,
+      "wifiCallingIds": [
+        "string"
+      ],
+      "singleSessionIdAccounting": false,
+      "proxyARP": false,
+      "enableAirtimeDecongestion": false,
+      "enableJoinRSSIThreshold": false,
+      "joinRSSIThreshold": -85,
+      "enableTransientClientManagement": false,
+      "joinWaitTime": 30,
+      "joinExpireTime": 300,
+      "joinWaitThreshold": 10,
+      "enableOptimizedConnectivityExperience": false,
+      "broadcastProbeResponseDelay": 15,
+      "rssiAssociationRejectionThreshold": -75,
+      "enableAntiSpoofing": false,
+      "enableArpRequestRateLimit": true,
+      "arpRequestRateLimit": 15,
+      "enableDhcpRequestRateLimit": true,
+      "dhcpRequestRateLimit": 15,
+      "dnsProxyEnabled": false,
+      "dnsProxy": {
+        "dnsProxyRules": [
+          {
+            "domainName": "string",
+            "ipList": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    "macAddressAuthentication": false,
+    "macAuthMacFormat": "Lower",
+    "managementFrameProtection": "Disabled",
+    "vlanId": 1,
+    "ssid": "string",
+    "enabled": true,
+    "bypassCNA": false,
+    "passphrase": "stringst",
+    "saePassphrase": "stringst",
+    "wepHexKey": "string"
+  },
+  "guestPortal": {
+    "smsPasswordDuration": {
+      "duration": 12,
+      "unit": "TimeUnitEnum.HOUR"
+    },
+    "guestNetworkType": "ClickThrough",
+    "externalPortalKey": "string",
+    "enableSelfService": true,
+    "enableSmsLogin": false,
+    "maxDevices": 1,
+    "endOfDayReauthDelay": false,
+    "macCredentialsDuration": 240,
+    "lockoutPeriod": 120,
+    "lockoutPeriodEnabled": false,
+    "wisprPage": {
+      "captivePortalUrl": "string",
+      "integrationKey": "string",
+      "externalProviderName": "string",
+      "externalProviderRegion": "string",
+      "customExternalProvider": false,
+      "authRadius": {
+        "primary": {
+          "ip": "string",
+          "port": 1,
+          "sharedSecret": "string"
+        },
+        "secondary": {
+          "ip": "string",
+          "port": 1,
+          "sharedSecret": "string"
+        },
+        "tlsEnabled": false,
+        "cnSanIdentity": "string",
+        "ocspUrl": "string",
+        "trustedCAChain": {
+          "rootCert": {
+            "certData": "string",
+            "isRootCert": false,
+            "fileName": "string"
+          },
+          "interCerts": [
+            {
+              "certData": "string",
+              "isRootCert": false,
+              "fileName": "string"
+            }
+          ],
+          "info": "string"
+        }
+      },
+      "accountingRadius": {
+        "primary": {
+          "ip": "string",
+          "port": 1,
+          "sharedSecret": "string"
+        },
+        "secondary": {
+          "ip": "string",
+          "port": 1,
+          "sharedSecret": "string"
+        },
+        "tlsEnabled": false,
+        "cnSanIdentity": "string",
+        "ocspUrl": "string",
+        "trustedCAChain": {
+          "rootCert": {
+            "certData": "string",
+            "isRootCert": false,
+            "fileName": "string"
+          },
+          "interCerts": [
+            {
+              "certData": "string",
+              "isRootCert": false,
+              "fileName": "string"
+            }
+          ],
+          "info": "string"
+        }
+      }
+    },
+    "guestPage": {
+      "langCode": "string",
+      "title": "string",
+      "tagLine": "string",
+      "welcomeMessage": "string",
+      "termsAndConditions": "string",
+      "logoImage": {
+        "id": "string",
+        "name": "string"
+      },
+      "advertImage": {
+        "id": "string",
+        "name": "string"
+      },
+      "wifi4Eu": false,
+      "wifi4EuNetworkId": "string"
+    },
+    "socialIdentities": {
+      "google": {
+        "source": "SocialIdentitySource.RUCKUS",
+        "config": {
+          "appId": "string",
+          "appSecret": "string"
+        }
+      },
+      "facebook": {
+        "source": "SocialIdentitySource.RUCKUS",
+        "config": {
+          "appId": "string",
+          "appSecret": "string"
+        }
+      },
+      "linkedin": {
+        "source": "SocialIdentitySource.RUCKUS",
+        "config": {
+          "appId": "string",
+          "appSecret": "string"
+        }
+      },
+      "twitter": {
+        "source": "SocialIdentitySource.RUCKUS",
+        "config": {
+          "appId": "string",
+          "appSecret": "string"
+        }
+      }
+    },
+    "socialEmails": false,
+    "socialDomains": [
+      "string"
+    ],
+    "hostGuestConfig": {
+      "hostDomains": [
+        "string"
+      ],
+      "hostDurationChoices": [
+        0
+      ]
+    },
+    "externalPortalUrl": "string",
+    "redirectUrl": "string",
+    "userSessionTimeout": 1440,
+    "userSessionGracePeriod": 60,
+    "walledGardens": [
+      "string"
+    ]
+  },
+  "enableDhcp": false
+}

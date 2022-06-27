@@ -1,0 +1,6 @@
+  {
+    "serialNumber": "string",
+    "venueId": "string",
+    "name": "string",
+    "description": "string"
+  }

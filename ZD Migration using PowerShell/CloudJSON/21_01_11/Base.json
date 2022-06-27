@@ -1,0 +1,69 @@
+{
+  "type": "string",
+  "wlan": {
+    "wlanSecurity": "string",
+    "advancedCustomization": {
+      "l2AclPolicyId": "string",
+      "l3AclPolicyId": "string",
+      "userUplinkRateLimiting": 0,
+      "userDownlinkRateLimiting": 0,
+      "totalUplinkRateLimiting": 0,
+      "totalDownlinkRateLimiting": 0,
+      "maxClientsOnWlanPerRadio": 100,
+      "enableBandBalancing": true,
+      "clientIsolation": false,
+      "clientIsolationOptions": {
+        "packetsType": "UNICAST",
+        "autoVrrp": false
+      },
+      "hideSsid": false,
+      "forceMobileDeviceDhcp": false,
+      "clientLoadBalancingEnable": true,
+      "enableAaaVlanOverride": false,
+      "directedThreshold": 5,
+      "enableNeighborReport": true,
+      "enableFastRoaming": false,
+      "radioCustomization": {
+        "rfBandUsage": "BOTH",
+        "bssMinimumPhyRate": "default",
+        "phyTypeConstraint": "OFDM",
+        "managementFrameMinimumPhyRate": "6"
+      },
+      "clientInactivityTimeout": 120,
+      "vlanPool": {
+        "name": "string",
+        "description": "string",
+        "vlanMembers": [
+          "string"
+        ],
+        "id": "string"
+      },
+      "l2AclEnable": false,
+      "l3AclEnable": false,
+      "proxyARP": false,
+      "enableJoinRSSIThreshold": false,
+      "joinRSSIThreshold": -85,
+      "enableTransientClientManagement": false,
+      "joinWaitTime": 30,
+      "joinExpireTime": 300,
+      "joinWaitThreshold": 10
+    },
+    "macAddressAuthentication": false,
+    "macAuthMacFormat": "Lower",
+    "managementFrameProtection": "Disabled",
+    "vlanId": 1,
+    "ssid": "string",
+    "enabled": true,
+    "passphrase": "string",
+    "saePassphrase": "stringst",
+    "wepHexKey": "string"
+  },
+  "name": "string",
+  "description": "string",
+  "venues": [
+    {
+      "venueId": "string",
+      "allApGroupsRadio": "Both"
+    }
+  ]
+}

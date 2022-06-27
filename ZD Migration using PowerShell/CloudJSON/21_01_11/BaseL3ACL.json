@@ -1,0 +1,26 @@
+{
+  "name": "string",
+  "description": "string",
+  "defaultAccess": "BLOCK",
+  "l3Rules": [
+    {
+      "priority": 1,
+      "description": "string",
+      "access": "BLOCK",
+      "protocol": "L3ProtocolEnum_CUSTOM",
+      "customProtocol": 1,
+      "source": {
+        "enableIpSubnet": false,
+        "ip": "string",
+        "ipMask": "string",
+        "port": "string"
+      },
+      "destination": {
+        "enableIpSubnet": false,
+        "ip": "string",
+        "ipMask": "string",
+        "port": "string"
+      }
+    }
+  ]
+}

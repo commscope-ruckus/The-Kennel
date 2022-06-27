@@ -1,0 +1,14 @@
+{
+  "deployedInVenueId": "string",
+  "deployedInVenueName": "string",
+  "name": "string",
+  "deploymentType": "OnPremise",
+  "authRadius": {
+    "primary": {
+      "ip": "string",
+      "port": 1,
+      "sharedSecret": "string"
+    },
+    "tlsEnabled": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "dpskPassphraseGeneration" :{
+    "length": 18,
+    "format": "MOST_SECURED",
+    "expiration": "UNLIMITED"
+  }
+}

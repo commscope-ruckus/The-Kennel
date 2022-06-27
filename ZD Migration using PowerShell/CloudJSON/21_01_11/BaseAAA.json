@@ -1,0 +1,77 @@
+{
+  "type": "aaa",
+  "wlan": {
+    "advancedCustomization": {
+      "devicePolicyId": "string",
+      "l2AclPolicyId": "string",
+      "l3AclPolicyId": "string",
+      "applicationPolicyId": "string",
+      "userUplinkRateLimiting": 0,
+      "userDownlinkRateLimiting": 0,
+      "totalUplinkRateLimiting": 0,
+      "totalDownlinkRateLimiting": 0,
+      "maxClientsOnWlanPerRadio": 100,
+      "enableBandBalancing": true,
+      "clientIsolation": false,
+      "clientIsolationOptions": {
+        "packetsType": "UNICAST",
+        "autoVrrp": false
+      },
+      "hideSsid": false,
+      "forceMobileDeviceDhcp": false,
+      "clientLoadBalancingEnable": true,
+      "enableAaaVlanOverride": true,
+      "directedThreshold": 5,
+      "enableNeighborReport": true,
+      "enableFastRoaming": false,
+      "mobilityDomainId": 1,
+      "radioCustomization": {
+        "rfBandUsage": "BOTH",
+        "bssMinimumPhyRate": "BssMinimumPhyRateEnum._default",
+        "phyTypeConstraint": "OFDM",
+        "managementFrameMinimumPhyRate": "6"
+      },
+      "enableSyslog": false,
+      "clientInactivityTimeout": 120,
+      "vlanPool": {
+        "name": "string",
+        "description": "string",
+        "vlanMembers": [
+          "string"
+        ]
+      },
+      "applicationPolicyEnable": false,
+      "l2AclEnable": false,
+      "l3AclEnable": false,
+      "wifiCallingEnabled": false,
+      "wifiCallingIds": [
+        "string"
+      ],
+      "singleSessionIdAccounting": false,
+      "proxyARP": false,
+      "enableAirtimeDecongestion": false,
+      "enableJoinRSSIThreshold": false,
+      "joinRSSIThreshold": -85,
+      "enableTransientClientManagement": false,
+      "joinWaitTime": 30,
+      "joinExpireTime": 300,
+      "joinWaitThreshold": 10,
+      "enableOptimizedConnectivityExperience": false,
+      "broadcastProbeResponseDelay": 15,
+      "rssiAssociationRejectionThreshold": -75,
+      "enableAntiSpoofing": false,
+      "enableArpRequestRateLimit": true,
+      "arpRequestRateLimit": 15,
+      "enableDhcpRequestRateLimit": true,
+      "dhcpRequestRateLimit": 15
+    },
+    "vlanId": 1,
+    "ssid": "string",
+    "enabled": true,
+    "bypassCPUsingMacAddressAuthentication": false
+  },
+  "authRadiusId": "string",
+  "accountingRadiusId": "string",
+  "name": "string",
+  "description": "string"
+}

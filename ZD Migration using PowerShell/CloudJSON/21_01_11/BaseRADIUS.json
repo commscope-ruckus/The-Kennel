@@ -1,0 +1,13 @@
+{
+  "primary": {
+    "ip": "string",
+    "port": 1812,
+    "sharedSecret": "string"
+  },
+  "secondary": {
+    "ip": "string",
+    "port": 1812,
+    "sharedSecret": "string"
+  },
+  "tlsEnabled": false
+}

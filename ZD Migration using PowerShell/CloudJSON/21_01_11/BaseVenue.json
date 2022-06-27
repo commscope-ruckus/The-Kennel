@@ -1,0 +1,12 @@
+{
+  "address": {
+    "country": "United States",
+    "city": "Charlotte, North Carolina",
+    "addressLine": "Charlotte, NC, USA",
+    "latitude": 35.2270869,
+    "longitude": -80.8431267,
+    "timezone": "America/New_York"
+  },
+  "description": "For ZD Migration",
+  "name": "ZD Migration"
+}
