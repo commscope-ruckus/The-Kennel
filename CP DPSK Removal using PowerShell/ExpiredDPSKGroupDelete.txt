@@ -1,0 +1,153 @@
+﻿#Cloudpath version: 5.9 or above
+#the Cloudpath REST APIs use Json Web Tokens (JWT) to secure all endpoints
+#Note: Because each token expires after five minutes, you will need to re-send the request often. You need to use an active token with all other requests.
+
+$a = "error"
+While($a -eq "error")
+{
+    try
+    {
+        Write-Host "`r"
+        Write-Host "Type just the IP address or FQDN of the Cloudpath server"
+        Write-Host "`tEX: 192.168.0.1"
+        Write-Host "`tEX:test.cloudpath.com"
+        $CloudpathServer = Read-Host -Prompt "Cloudpath IP or FQDN"
+        $CloudpathAPIURL = "https://$($CloudpathServer)/admin/publicApi"
+        Write-Host "`r"
+        Write-Host "What is the Name Name of the DPSK Pool to Check?"
+        $DPSKPoolName = Read-Host -Prompt "DPSK Pool Name"
+        $Credentials = Get-Credential -Message "Cloudpath Script: Cloudpath Admin Credentials"
+        
+        $URL = "$($CloudpathAPIURL)/token"
+        $Headers = @{
+        "Accept" = "application/json"
+        "Content-Type" = "application/json"
+        }
+        $Body = @{
+        userName = $Credentials.UserName
+        password = $Credentials.GetNetworkCredential().Password
+        }
+        $Body = $Body | ConvertTo-Json
+        #need to catch unauthorized error
+        $Response = Invoke-RestMethod -Method Post -Uri $URL -Headers $Headers -Body $Body
+        $token = $Response.token
+        
+
+        $URL = "$($CloudpathAPIURL)/dpskPools"
+        $Headers = @{
+        "Content-Type" = "application/json"
+        "Authorization" = $token
+        }
+        $Response = Invoke-RestMethod -Method Get -Uri $URL -Headers $Headers 
+        $DPSKPoolDPSKhref = (($Response.contents | Where-Object -Property displayName -EQ "$($DPSKPoolName)").links | Where-Object -Property "rel" -EQ "dpsks").href
+        $DPSKPoolDPSKhref = ($DPSKPoolDPSKhref -split "dpsks")[0]
+        If($DPSKPoolDPSKhref -eq "")
+        {
+            throw "DPSKPoolNotFound"
+        }
+
+        $a = ""
+    }
+    catch
+    {
+        $ErrorVar = $_
+        switch -Regex($ErrorVar.Exception)
+        {
+            "(.*)could not establish(.*)"
+            {
+                Write-Host "ERROR: Can't find Cloudpath with FQDN or IP address."
+                break
+            }
+             "(.*)Unauthorized(.*)"
+            {
+                Write-Host "ERROR: Admin Credentials are wrong or unauthorized."
+            }
+            "(.*)DPSKPoolNotFound(.*)"
+            {
+                Write-Host "ERROR: DPSK Pool Not Found"
+            }
+        }
+        
+        $a = "error"
+        
+    }
+}
+
+
+$URL = "$($DPSKPoolDPSKhref)/dpsks"
+$Headers = @{
+"Content-Type" = "application/json"
+"Authorization" = $token
+}
+$Response = Invoke-RestMethod -Method Get -Uri $URL -Headers $Headers 
+$ExpiredDPSKs = $Response.contents | Where-Object -Property status -EQ "EXPIRED"
+
+
+$DPSKCount = $ExpiredDPSKs.Count
+$count = 0
+$a = ""
+while($a -cne "N" -and $count -lt $DPSKCount)
+{
+        
+    if($a -cne "Y")
+    {
+        Write-Host "`r"
+        Write-Host "Name: " $ExpiredDPSKs[$count].name
+        Write-Host "Enrollement Name: " $ExpiredDPSKs[$count].enrollmentUserName
+        Write-Host "Status: "$ExpiredDPSKs[$count].status
+        Write-Host "Expiration Date: " $ExpiredDPSKs[$count].expirationDateTime
+        while($a -ine "y" -and $a -ine "n")
+        {
+            Write-Host "Options"
+            Write-Host "`ty: Deletes only this record"
+            Write-Host "`tY: Deletes this and all other expired records"
+            Write-Host "`tn: Skips only this record"
+            Write-Host "`tN: Cancels and closes script"
+            $a = Read-Host "What would you like to do?"
+        }
+
+        if($a -ceq "y")
+        {
+            $URL = "$($DPSKPoolDPSKhref)/dpsks/$($ExpiredDPSKs[$count].guid)"
+            $Headers = @{
+            "Content-Type" = "application/json"
+            "Authorization" = $token
+            }
+            $Response = Invoke-RestMethod -Method Delete -Uri $URL -Headers $Headers 
+            $count++
+            $a = ""
+        }
+        elseif($a -ceq "n")
+        {
+            $count++
+            $a = ""
+        }
+    }
+    elseif($a -ceq "Y")
+    {
+        Write-Host "`r"
+        Write-Host "Deleting all Expired DPSKs"
+        
+        for($count;$count -lt $DPSKCount;$count++)
+        {
+            Write-Host "Name: " $ExpiredDPSKs[$count].name
+            Write-Host "Enrollement Name: " $ExpiredDPSKs[$count].enrollmentUserName
+            Write-Host "Status: "$ExpiredDPSKs[$count].status
+            Write-Host "Expiration Date: " $ExpiredDPSKs[$count].expirationDateTime
+            Write-Host "`r"
+            $URL = "$($DPSKPoolDPSKhref)/dpsks/$($ExpiredDPSKs[$count].guid)"
+            $Headers = @{
+            "Content-Type" = "application/json"
+            "Authorization" = $token
+            }
+            $Response = Invoke-RestMethod -Method Delete -Uri $URL -Headers $Headers 
+            Start-Sleep -Seconds 3
+        }
+    }
+    else
+    {
+        $a = ""
+    }
+}
+
+Read-Host "Script Completed"
